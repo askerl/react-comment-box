@@ -17,6 +17,33 @@ class CommentBox extends React.Component {
     this._fetchComments();
   }
 
+  // componentDidMount() {
+  //
+  //   let comments = [...this.state.comments];
+  //
+  //   for (let c = 0; c < 3; c++) {
+  //     let newId = comments.length + 1;
+  //     let nc = {
+  //       id: newId,
+  //       author: "Anonymous: " + newId,
+  //       body: "Bot adding comments"
+  //     }
+  //     console.log("Adding comment ",c,nc);
+  //     comments.push(nc);
+  //   }
+  //   // this.post = setInterval(() => {
+  //   //   this._addComment("Bot","Bot adding comments")
+  //   // }, 2000);
+  //   this.setState({
+  //     comments
+  //   });
+  //
+  // }
+
+  // componentWillUnmount() {
+  //   clearInterval(this.post);
+  // }
+
   _fetchComments(){
     this.setState({
       comments: this.props.initList
@@ -52,6 +79,7 @@ class CommentBox extends React.Component {
   }
 
   render() {
+    console.log("rendering...");
     const comments = this._getComments();
     let buttonText = this._getToggleButtonText();
     let commentsCount = comments.length;
@@ -93,7 +121,7 @@ class CommentBox extends React.Component {
 
   _addComment(author,body){
     if (author == "" || body == "") {
-      alert("You must enter your name and the comment");
+      alert("You must enter name and comment");
       return;
     }
     const newComment = {

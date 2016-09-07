@@ -14,6 +14,7 @@ class Comment extends React.Component {
             Delete comment
           </a>
         </div>
+        {/* <Button text="Click me" name={comment.author}/> */}
       </div>
     );
   }
@@ -26,5 +27,13 @@ class Comment extends React.Component {
   }
 
 }
+
+const Button = (props) => {
+  let author = props.name;
+  return(
+     <button type="button" onClick={() => alert(`Thanks ${author}`)}>{`${props.text} ${author}`}</button>
+  )
+}
+
 
 export default Comment;
