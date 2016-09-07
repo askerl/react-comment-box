@@ -1,0 +1,119 @@
+
+html {
+  font-family: arial;
+  font-size: 14px
+}
+
+h3 {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+h4 {
+  margin: 0;
+}
+
+.div50{
+  width: 50%;
+  display: block;
+}
+
+.app{
+  background-color: #ccc;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.comment-box {
+  padding: 10px;
+  background-color: #69a2ab;
+
+}
+
+.comment{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #e7e7e7;
+}
+
+.comment-count-container{
+  width: 50%;
+  float: left;
+}
+
+.comment-count {
+  color: white;
+  font-size: 1.6em;
+  font-weight: normal;
+}
+
+.comment-header{
+  color: white;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.comment-body{
+  font-size: 1.1em;
+}
+
+.comment-footer-delete{
+  color: #ccd9da;
+  float: right;
+  margin-top: -75px;
+  text-transform: uppercase;
+}
+
+.toggle-container{
+  float: left;
+  width: 50%;
+  text-align: right;
+}
+
+button.comments-toggle{
+  padding: 10px;
+  background-color: #547279;
+  border: 0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+.comment-form{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #aad2db;
+  padding: 10px;
+}
+
+.comment-form label{
+  color: white;
+  font-size: 1.2em;
+}
+
+.comment-form-fields input,textarea{
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  width: 100%;
+  border: none;
+}
+
+.comment-form-actions button{
+  border: none;
+  background-color: #fceb88;
+  font-size: 1em;
+}
+
+#wrapper1{
+  margin-bottom: 60px;
+}
