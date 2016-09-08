@@ -1,7 +1,7 @@
 {
   "name": "react-comment-box",
   "version": "1.0.0",
-  "description": "",
+  "description": "React comment box application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "css-loader": "^0.25.0",

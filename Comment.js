@@ -1,7 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import NumInput from './NumInput.js';
+
 class Comment extends React.Component {
+
+  constructor(){
+    super();
+    this.state = {
+      angerLevel: 0,
+    }
+  }
+
+  componentWillMount() {
+    this.setState({
+      angerLevel: this.props.comment.angerLevel
+    });
+  }
 
   render() {
     let comment = this.props.comment;
@@ -15,6 +30,15 @@ class Comment extends React.Component {
           </a>
         </div>
         {/* <Button text="Click me" name={comment.author}/> */}
+        <NumInput
+          ref="anger"
+          min={0}
+          max={100}
+          step={1}
+          val={+this.state.angerLevel}
+          label="Anger level"
+          type="range"
+          onUpdate={this._updateAngerLevel.bind(this)}/>
       </div>
     );
   }
@@ -25,6 +49,16 @@ class Comment extends React.Component {
       this.props.onDelete(this.props.comment);
     }
   }
+
+  _updateAngerLevel(event){
+    event.preventDefault();
+    let val = ReactDOM.findDOMNode(this.refs.anger.refs.num).value;
+    this.setState({
+       angerLevel: val
+    });
+    this.props.onAngerUpdate(this.props.comment, val);
+  }
+
 
 }
 

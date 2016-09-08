@@ -17,33 +17,6 @@ class CommentBox extends React.Component {
     this._fetchComments();
   }
 
-  // componentDidMount() {
-  //
-  //   let comments = [...this.state.comments];
-  //
-  //   for (let c = 0; c < 3; c++) {
-  //     let newId = comments.length + 1;
-  //     let nc = {
-  //       id: newId,
-  //       author: "Anonymous: " + newId,
-  //       body: "Bot adding comments"
-  //     }
-  //     console.log("Adding comment ",c,nc);
-  //     comments.push(nc);
-  //   }
-  //   // this.post = setInterval(() => {
-  //   //   this._addComment("Bot","Bot adding comments")
-  //   // }, 2000);
-  //   this.setState({
-  //     comments
-  //   });
-  //
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.post);
-  // }
-
   _fetchComments(){
     this.setState({
       comments: this.props.initList
@@ -54,7 +27,7 @@ class CommentBox extends React.Component {
       let comments = this.state.comments;
       return comments.map( comment => {
           return(
-              <Comment key={comment.id} comment={comment} onDelete={this._deleteComment.bind(this)}/>
+              <Comment key={comment.id} comment={comment} onDelete={this._deleteComment.bind(this)} onAngerUpdate={this._updateComment.bind(this)}/>
           );
         }
       );
@@ -79,7 +52,6 @@ class CommentBox extends React.Component {
   }
 
   render() {
-    console.log("rendering...");
     const comments = this._getComments();
     let buttonText = this._getToggleButtonText();
     let commentsCount = comments.length;
@@ -105,6 +77,7 @@ class CommentBox extends React.Component {
         <div id="wrapper1">
           <div className='comment-count-container'>
             <h4 className="comment-count">{this._getCommentsTitle(commentsCount)}</h4>
+            <span className="anger-level">Avg. anger level: {this._avgAngerLevel()}</span>
           </div>
           {commentButton}
         </div>
@@ -145,6 +118,28 @@ class CommentBox extends React.Component {
        comments: newList
     });
 
+  }
+
+  _updateComment(comment, newAngerLevel){
+
+    let newList = [...this.state.comments];
+    let cIndex = newList.indexOf(comment);
+    newList[cIndex].angerLevel = newAngerLevel;
+    this.setState({
+       comments: newList
+    });
+    this._avgAngerLevel();
+    
+  }
+
+  _avgAngerLevel(){
+    let comments = this.state.comments;
+    let totalComments = comments.length;
+    let totalAnger = 0;
+    for (let comment of comments) {
+      totalAnger += +comment.angerLevel;
+    }
+    return totalComments > 0 ? (totalAnger / totalComments) : 0;
   }
 
 }

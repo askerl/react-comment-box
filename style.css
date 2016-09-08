@@ -117,3 +117,15 @@ button.comments-toggle{
 #wrapper1{
   margin-bottom: 60px;
 }
+
+.anger-level{
+  color: blue;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+#separator{
+  border-bottom: 2px dashed;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
