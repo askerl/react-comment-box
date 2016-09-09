@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { addComment } from '../constants/actions';
 
 class CommentForm extends React.Component {
 
@@ -20,11 +21,13 @@ class CommentForm extends React.Component {
 
   _handleSubmit(event){
     event.preventDefault();
-    let autor = this._author.value;
-    let comentario = this._body.value;
-    this.props.addComment(autor,comentario);
+    let author = this._author.value;
+    let body = this._body.value;
+    this.props.dispatch(addComment(author,body));
   }
 
 }
+
+CommentForm = connect()(CommentForm);
 
 export default CommentForm;

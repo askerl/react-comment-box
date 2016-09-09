@@ -1,22 +1,23 @@
-
+var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './main.js',
+  entry: './src/main',
   output: {
     path: './',
-    filename: 'index.js'
+    filename: 'bundle.js'
   },
   devServer: {
     inline: true,
-    port: 3333
+    port: 3334
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel',
+        include: path.join(__dirname, 'src'),
         query: {
           presets: ['es2015', 'react']
         }
@@ -24,11 +25,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf$/,    loader: "file-loader" },
-      { test: /\.eot$/,    loader: "file-loader" },
-      { test: /\.svg$/,    loader: "file-loader" }
+      }
     ]
   },
   plugins: [

@@ -1,8 +1,0 @@
-
-[
-  {"id":1,"author":"John","body":"I'm working with React","angerLevel":21},
-  {"id":2,"author":"Jeff","body":"This is a comment for testing the app","angerLevel":44},
-  {"id":3,"author":"Karl","body":"I'm retired from basketball","angerLevel":65},
-  {"id":4,"author":"Jerry","body":"I used to coach the Jazz","angerLevel":79},
-  {"id":5,"author":"Howard","body":"I was the substitute point-guard","angerLevel":99}
-]
