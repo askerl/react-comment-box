@@ -8,39 +8,38 @@ const initialState = {
 };
 
 const commentsReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case ADD_COMMENT:
 
-      console.log("Adding comment", action);
-
-      let {author,body,id } = action;
+      let {author,body} = action;
       if (author == "" || body == "") {
         alert("You must enter name and comment");
         return state;
       }
       const newComment = {
-        id,
+        id: state.comments.length + 1,
         author,
         body
       }
-      return Object.assign({},state,{ comments: state.comments.concat([newComment])});
+      return Object.assign({},state,{ comments: [...state.comments, newComment]});
 
     case DELETE_COMMENT:
 
-      console.log("Deleting comment", action);
-      console.log("before delete:",state.comments);
-      // use spread operator to clone state comments list
-      let newList = state.comments.filter(item => item.id !== action.id);
-      console.log("after delete:",newList);
-      // set the state comment list to the new list
-      return Object.assign({},state,{ comments: newList })
+      if (confirm("Are you sure?")) {
+
+        // use spread operator to clone state comments list
+        let newList = state.comments.filter(item => item.id !== action.id);
+        // set the state comment list to the new list
+        return Object.assign({},state,{ comments: newList })
+
+      } else {
+        return state
+      }
 
     case TOGGLE_COMMENTS:
 
-      console.log("Toggling comments", action);
-
-      let show = !state.showComments;
-      return Object.assign({},state,{ showComments: show })
+      return Object.assign({},state,{ showComments: !state.showComments })
 
     default:
       return state

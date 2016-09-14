@@ -1,30 +1,38 @@
 import React from 'react';
+
 import { connect } from 'react-redux';
 import { addComment } from '../constants/actions';
 
-class CommentForm extends React.Component {
+import Panel from './Panel';
 
-  render() {
+let CommentForm = ( { dispatch } ) => {
+
+    let input,textarea;
+
+    let form =
+      <form onSubmit={()=> dispatch(addComment(input.value,textarea.value))}>
+        <div className="form-group row">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" id="author" placeholder="Name" ref={(elem) => input = elem}></input>
+            </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-12">
+            <textarea className="form-control" id="comment" placeholder="Comment" ref={(elem) => textarea = elem}></textarea>
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="offset-sm-1 col-sm-11">
+            <button type="submit" className="btn btn-primary">Post comment</button>
+          </div>
+        </div>
+      </form>;
+
     return (
-      <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
-        <label>Join the discussion</label>
-        <div className="comment-form-fields">
-          <input placeholder="Name:" ref={(elem) => this._author = elem}/>
-          <textarea placeholder="Comment:" ref={(elem) => this._body = elem}></textarea>
-        </div>
-        <div className="comment-form-actions">
-          <button type="submit">Post comment</button>
-        </div>
-      </form>
+      <div>
+        <Panel title={"Join the discussion"} content={form} />
+      </div>
     );
-  }
-
-  _handleSubmit(event){
-    event.preventDefault();
-    let author = this._author.value;
-    let body = this._body.value;
-    this.props.dispatch(addComment(author,body));
-  }
 
 }
 

@@ -4,18 +4,20 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import commentsReducer from './reducers/reducer.js';
-
-import CommentBox from './components/CommentBox.js';
-
 import { connect } from 'react-redux';
 
+import CommentForm from './components/CommentForm';
+import CommentBox from './containers/CommentBox.js';
+import Nav from './components/Nav'
+
 // css
+require('bootstrap');
 require('../style.css');
 
 // *******************************************
 
 // Generate the Comment Box
-let title = "Comment Box (redux version)";
+let title = "Comment Box";
 // initial comment list
 const comments = [
   {id: 1, author: "John", body: "I'm working with React"},
@@ -37,9 +39,25 @@ let store = createStore(commentsReducer,initialState);
 // Log the initial state
 console.log(store.getState());
 
+const CommentBoxApp = () => (
+  <div>
+    <Nav title={title}/>
+    <div className="container">
+      <div className="starter-template">
+        <h2>{title}</h2>
+        <p className="lead">
+          This is a starter version of a comment box created with React and Redux
+        </p>
+      </div>
+      <CommentForm />
+      <CommentBox />
+    </div>
+  </div>
+);
+
 ReactDOM.render(
   <Provider store={store}>
-    <CommentBox title={title}/>
+    <CommentBoxApp />
   </Provider>,
   document.getElementById('app')
 );

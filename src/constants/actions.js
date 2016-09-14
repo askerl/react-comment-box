@@ -2,8 +2,6 @@
  * action types
  */
 
-let nextId = 0;
-
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
@@ -14,7 +12,6 @@ export const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
 export function addComment(author,body) {
   return {
     type: ADD_COMMENT,
-    id: ++nextId,
     author,
     body
   }

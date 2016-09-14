@@ -1,0 +1,16 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.navbar-brand {
+  padding: 10px 10px;
+}
+
+.navbar-brand>img {
+  display: inline;
+  padding-right: 10px;
+}
